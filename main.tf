@@ -70,7 +70,6 @@ resource "aws_instance" "terraform_ec2_instance" {
     ami = var.amiid
     instance_type = "t2.micro"
     key_name = "terraform_project"
-    associate_public_ip_address = false
 
     network_interface {
         network_interface_id = aws_network_interface.terraform_ec2_ni.id
