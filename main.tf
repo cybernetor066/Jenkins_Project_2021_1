@@ -17,6 +17,7 @@ resource "aws_subnet" "terraform_ec2_subnet" {
   vpc_id            = aws_vpc.terraform_ec2_vpc.id
   cidr_block        = aws_vpc.terraform_ec2_vpc.cidr_block
   availability_zone = "eu-west-1a"
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "tf-project"
@@ -69,7 +70,7 @@ resource "aws_instance" "terraform_ec2_instance" {
     ami = var.amiid
     instance_type = "t2.micro"
     key_name = "terraform_project"
-    associate_public_ip_address = true
+    associate_public_ip_address = false
 
     network_interface {
         network_interface_id = aws_network_interface.terraform_ec2_ni.id
